@@ -37,7 +37,12 @@
                 </div>
               </div>
               <div class="meetup-actions">
-                <a href="" class="btn"> More Details </a>
+                <a
+                  href="{% url 'meetup-detail' meetup_item.slug %}"
+                  class="btn"
+                >
+                  More Details
+                </a>
               </div>
             </article>
           </li>
@@ -45,13 +50,5 @@
         </ol>
       </section>
     </main>
-
-    <!-- <h1>All Meetups!</h1>
-    <p>Hello World!</p>
-    {% if show_meetups %} {% for meetup_item in meetups %}
-    <h2>{{ meetup_item.title }}</h2>
-    {% endfor %} {% else %}
-    <p>No meetups found!</p>
-    {% endif %} -->
   </body>
 </html>
