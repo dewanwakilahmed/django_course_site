@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Meetup
 from .forms import RegistrationForm
@@ -23,6 +23,7 @@ def meetup_details(request, meetup_slug):
             if registration_form.is_valid():
                 participant = registration_form.save()
                 selected_meetup.participant.add(participant)
+                return redirect('confirm-registration')
         return render(request, 'meetups/meetup-details.html', {
             'meetup_found': True,
             'meetup': selected_meetup,
@@ -32,3 +33,7 @@ def meetup_details(request, meetup_slug):
         return render(request, 'meetups/meetup-details.html', {
             'meetup_found': False
         })
+
+
+def confirm_registration(request):
+    return render(request, 'meetups/registration-success.html')
